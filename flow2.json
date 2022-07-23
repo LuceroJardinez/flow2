@@ -1,0 +1,113 @@
+[
+    {
+        "id": "50889cb1487c4430",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0b2a459a0d12d121",
+        "type": "inject",
+        "z": "50889cb1487c4430",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "d6656d6038fdc383"
+            ]
+        ]
+    },
+    {
+        "id": "8297c3d0966eb1e9",
+        "type": "debug",
+        "z": "50889cb1487c4430",
+        "name": "msg.payload",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "d6656d6038fdc383",
+        "type": "function",
+        "z": "50889cb1487c4430",
+        "name": "function 1",
+        "func": "// Lo que está después de “//” son comentarios\n// Crea un objeto Date a partir del payload enviado por timestamp\nvar date = new Date(msg.payload);\n// Cambia el payload para que sea una fecha con formato\nmsg.payload = date.toString();\n// Regresa el mensaje para que se envíe al sigueinte nodo\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 160,
+        "wires": [
+            [
+                "8297c3d0966eb1e9",
+                "85a9346fcbd43ec3"
+            ]
+        ]
+    },
+    {
+        "id": "85a9346fcbd43ec3",
+        "type": "ui_text",
+        "z": "50889cb1487c4430",
+        "group": "49520ed6edbc01bc",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 570,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "49520ed6edbc01bc",
+        "type": "ui_group",
+        "name": "Grupo 1-G8",
+        "tab": "1dc930a7e73f1fd5",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1dc930a7e73f1fd5",
+        "type": "ui_tab",
+        "name": "flow2 -G8",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
